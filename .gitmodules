@@ -1,0 +1,27 @@
+[submodule "01-creating-a-window/external/glfw"]
+	path = 01-creating-a-window/external/glfw
+	url = https://github.com/glfw/glfw.git
+[submodule "02-hello-square/external/glfw"]
+	path = 02-hello-square/external/glfw
+	url = https://github.com/glfw/glfw.git
+[submodule "02-hello-triangle/external/glfw"]
+	path = 02-hello-triangle/external/glfw
+	url = https://github.com/glfw/glfw.git
+[submodule "03-shaders/external/glfw"]
+	path = 03-shaders/external/glfw
+	url = https://github.com/glfw/glfw.git
+[submodule "04-textures/external/glfw"]
+	path = 04-textures/external/glfw
+	url = https://github.com/glfw/glfw.git
+[submodule "05-transformations/external/glfw"]
+	path = 05-transformations/external/glfw
+	url = https://github.com/glfw/glfw.git
+[submodule "05-transformations/external/cglm"]
+	path = 05-transformations/external/cglm
+	url = https://github.com/recp/cglm.git
+[submodule "06-coordinate-systems/external/glfw"]
+	path = 06-coordinate-systems/external/glfw
+	url = https://github.com/glfw/glfw.git
+[submodule "06-coordinate-systems/external/cglm"]
+	path = 06-coordinate-systems/external/cglm
+	url = https://github.com/recp/cglm.git
