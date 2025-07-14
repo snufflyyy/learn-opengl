@@ -25,3 +25,9 @@
 [submodule "06-coordinate-systems/external/cglm"]
 	path = 06-coordinate-systems/external/cglm
 	url = https://github.com/recp/cglm.git
+[submodule "07-camera/external/glfw"]
+	path = 07-camera/external/glfw
+	url = https://github.com/glfw/glfw.git
+[submodule "07-camera/external/cglm"]
+	path = 07-camera/external/cglm
+	url = https://github.com/recp/cglm.git
