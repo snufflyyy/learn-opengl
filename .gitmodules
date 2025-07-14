@@ -31,3 +31,27 @@
 [submodule "07-camera/external/cglm"]
 	path = 07-camera/external/cglm
 	url = https://github.com/recp/cglm.git
+[submodule "08-basic-lighting/external/glfw"]
+	path = 08-basic-lighting/external/glfw
+	url = https://github.com/glfw/glfw.git
+[submodule "08-basic-lighting/external/cglm"]
+	path = 08-basic-lighting/external/cglm
+	url = https://github.com/recp/cglm.git
+[submodule "09-materials/external/glfw"]
+	path = 09-materials/external/glfw
+	url = https://github.com/glfw/glfw.git
+[submodule "09-materials/external/cglm"]
+	path = 09-materials/external/cglm
+	url = https://github.com/recp/cglm.git
+[submodule "10-lighting-maps/external/glfw"]
+	path = 10-lighting-maps/external/glfw
+	url = https://github.com/glfw/glfw.git
+[submodule "10-lighting-maps/external/cglm"]
+	path = 10-lighting-maps/external/cglm
+	url = https://github.com/recp/cglm.git
+[submodule "11-light-casters/external/glfw"]
+	path = 11-light-casters/external/glfw
+	url = https://github.com/glfw/glfw.git
+[submodule "11-light-casters/external/cglm"]
+	path = 11-light-casters/external/cglm
+	url = https://github.com/recp/cglm.git
