@@ -16,6 +16,10 @@ struct Light {
     vec3 ambient;
     vec3 diffuse;
     vec3 specular;
+
+    float constant;
+    float linear;
+    float quadratic;
 };
 
 out vec4 fragment_color;
@@ -39,6 +43,14 @@ void main() {
     vec3 reflect_direction = reflect(-light_direction, normalized_normal);
     float specular = pow(max(dot(view_direction, reflect_direction), 0.0), material.shininess);
     vec3 specular_light = light.specular * specular * vec3(texture(material.specular, texture_coord));
+
+    // attenuation
+    float distance = length(light.position - fragment_position);
+    float attenuation = 1.0 / (light.constant + light.linear * distance + light.quadratic * (distance * distance));
+
+    ambient_light *= attenuation;
+    diffuse_light *= attenuation;
+    specular_light *= attenuation;
 
     vec3 resulting_color = ambient_light + diffuse_light + specular_light;
     fragment_color = vec4(resulting_color, 1.0);

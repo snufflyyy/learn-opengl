@@ -4,6 +4,9 @@
 #include <GLFW/glfw3.h>
 #include <cglm/cglm.h>
 
+#include "cglm/affine-pre.h"
+#include "cglm/mat4.h"
+#include "cglm/util.h"
 #include "window.h"
 #include "shader.h"
 #include "camera.h"
@@ -52,6 +55,19 @@ GLfloat cube_vertices[] = {
      0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  1.0f, 0.0f,
     -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 0.0f,
     -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 1.0f
+};
+
+vec3 cube_positions[] = {
+    {  0.0f,  0.0f,  0.0f },
+    {  2.0f,  5.0f, -15.0f },
+    { -1.5f, -2.2f, -2.5f },
+    { -3.8f, -2.0f, -12.3f },
+    {  2.4f, -0.4f, -3.5f },
+    { -1.7f,  3.0f, -7.5f },
+    {  1.3f, -2.0f, -2.5f },
+    {  1.5f,  2.0f, -2.5f },
+    {  1.5f,  0.2f, -1.5f },
+    { -1.3f,  1.0f, -1.5f }
 };
 
 int main() {
@@ -109,6 +125,10 @@ int main() {
     GLuint object_light_diffuse_uniform_location = glGetUniformLocation(object_shader.program, "light.diffuse");
     GLuint object_light_specular_uniform_location = glGetUniformLocation(object_shader.program, "light.specular");
 
+    GLuint object_light_constant_uniform_location = glGetUniformLocation(object_shader.program, "light.constant");
+    GLuint object_light_linear_uniform_location = glGetUniformLocation(object_shader.program, "light.linear");
+    GLuint object_light_quadratic_uniform_location = glGetUniformLocation(object_shader.program, "light.quadratic");
+
     GLuint object_view_position_uniform_location = glGetUniformLocation(object_shader.program, "view_position");
 
     GLuint light_model_uniform_location = glGetUniformLocation(light_shader.program, "model");
@@ -132,6 +152,9 @@ int main() {
     shader_set_vec3_uniform(object_light_ambient_uniform_location, (vec3) {0.2f, 0.2f, 0.2f});
     shader_set_vec3_uniform(object_light_diffuse_uniform_location, (vec3) {0.5f, 0.5f, 0.5f});
     shader_set_vec3_uniform(object_light_specular_uniform_location, (vec3) {1.0f, 1.0f, 1.0f});
+    shader_set_float_uniform(object_light_constant_uniform_location, 1.0f);
+    shader_set_float_uniform(object_light_linear_uniform_location, 0.09f);
+    shader_set_float_uniform(object_light_quadratic_uniform_location, 0.032f);
 
     shader_set_vec3_uniform(object_view_position_uniform_location, camera.position);
 
@@ -172,13 +195,19 @@ int main() {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         shader_bind(object_shader);
-        shader_set_mat4_uniform(object_model_uniform_location, object_model);
         shader_set_mat4_uniform(object_view_uniform_location, camera.view);
         shader_set_mat4_uniform(object_projection_uniform_location, camera.projection);
         shader_set_vec3_uniform(object_view_position_uniform_location, camera.position);
 
         glBindVertexArray(object_vao);
-        glDrawArrays(GL_TRIANGLES, 0, sizeof(cube_vertices) / sizeof(GLfloat));
+        for (int i = 0; i < sizeof(cube_positions) / sizeof(vec3); i++) {
+            glm_mat4_identity(object_model);
+            glm_translate(object_model, cube_positions[i]);
+            float angle = 20.0f * i;
+            glm_rotate(object_model, glm_rad(angle), (vec3) {1.0f, 0.3f, 0.5f});
+            shader_set_mat4_uniform(object_model_uniform_location, object_model);
+            glDrawArrays(GL_TRIANGLES, 0, sizeof(cube_vertices) / sizeof(GLfloat));
+        }
 
         shader_bind(light_shader);
         shader_set_mat4_uniform(light_model_uniform_location, light_model);

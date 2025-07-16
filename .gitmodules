@@ -55,3 +55,36 @@
 [submodule "11-light-casters/external/cglm"]
 	path = 11-light-casters/external/cglm
 	url = https://github.com/recp/cglm.git
+[submodule "12-multiple-lights/external/glfw"]
+	path = 12-multiple-lights/external/glfw
+	url = https://github.com/glfw/glfw.git
+[submodule "12-multiple-lights/external/cglm"]
+	path = 12-multiple-lights/external/cglm
+	url = https://github.com/recp/cglm.git
+[submodule "13-mesh/external/glfw"]
+	path = 13-mesh/external/glfw
+	url = https://github.com/glfw/glfw.git
+[submodule "13-mesh/external/cglm"]
+	path = 13-mesh/external/cglm
+	url = https://github.com/recp/cglm.git
+[submodule "13-mesh/external/assimp"]
+	path = 13-mesh/external/assimp
+	url = https://github.com/assimp/assimp.git
+[submodule "14-model/external/glfw"]
+	path = 14-model/external/glfw
+	url = https://github.com/glfw/glfw.git
+[submodule "14-model/external/cglm"]
+	path = 14-model/external/cglm
+	url = https://github.com/recp/cglm.git
+[submodule "14-model/external/assimp"]
+	path = 14-model/external/assimp
+	url = https://github.com/assimp/assimp.git
+[submodule "15-depth-testing/external/glfw"]
+	path = 15-depth-testing/external/glfw
+	url = https://github.com/glfw/glfw.git
+[submodule "15-depth-testing/external/cglm"]
+	path = 15-depth-testing/external/cglm
+	url = https://github.com/recp/cglm.git
+[submodule "15-depth-testing/external/assimp"]
+	path = 15-depth-testing/external/assimp
+	url = https://github.com/assimp/assimp.git
